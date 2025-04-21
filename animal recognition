@@ -1,0 +1,46 @@
+% Facts: Animal properties
+% animal(Name, Habitat, Diet, Body_Type, Legs, Size)
+animal(lion, land, carnivore, furry, 4, large).
+animal(tiger, land, carnivore, furry, 4, large).
+animal(elephant, land, herbivore, furry, 4, large).
+animal(dolphin, water, carnivore, smooth, 0, medium).
+animal(cow, land, herbivore, furry, 4, medium).
+animal(chicken, land, omnivore, feathered, 2, small).
+animal(crocodile, water, carnivore, scaly, 4, large).
+animal(snake, land, carnivore, scaly, 0, small).
+animal(parrot, land, omnivore, feathered, 2, small).
+
+% Rules for identifying an animal based on habitat
+identify_animal_by_habitat(Habitat) :-
+    animal(Name, Habitat, _, _, _, _),
+    write('The animal is: '), write(Name), nl.
+
+% Rules for identifying an animal by diet
+identify_animal_by_diet(Diet) :-
+    animal(Name, _, Diet, _, _, _),
+    write('The animal is: '), write(Name), nl.
+
+% Rules for identifying an animal by body type
+identify_animal_by_body_type(Body_Type) :-
+    animal(Name, _, _, Body_Type, _, _),
+    write('The animal is: '), write(Name), nl.
+
+% Rules for identifying an animal by number of legs
+identify_animal_by_legs(Legs) :-
+    animal(Name, _, _, _, Legs, _),
+    write('The animal is: '), write(Name), nl.
+
+% Rules for identifying an animal by size
+identify_animal_by_size(Size) :-
+    animal(Name, _, _, _, _, Size),
+    write('The animal is: '), write(Name), nl.
+
+% Main rule: Identifying an animal based on multiple features
+identify_animal(Habitat, Diet, Body_Type, Legs, Size) :-
+    animal(Name, Habitat, Diet, Body_Type, Legs, Size),
+    write('The animal is: '), write(Name), nl.
+
+% Example Queries:
+% ?- identify_animal(land, carnivore, furry, 4, large).
+% ?- identify_animal_by_habitat(water).
+% ?- identify_animal_by_legs(4).
