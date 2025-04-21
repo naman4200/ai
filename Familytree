@@ -1,0 +1,61 @@
+% Facts: Gender (male or female)
+male(dinesh).
+male(nirhoo).
+male(aaradhya).
+female(manasi).
+female(poonam).
+female(tilka).
+
+% Facts: Parent-child relationships
+parent(dinesh, manasi).
+parent(dinesh, aaradhya).
+parent(poonam, manasi).
+parent(poonam, aaradhya).
+parent(tilka, dinesh).
+parent(nirhoo, dinesh).
+
+% Facts: Partners
+partner(dinesh, poonam).
+partner(tilka, nirhoo).
+
+% Rules:
+% X is a male
+is_male(X) :-
+    male(X).
+
+% X is a female
+is_female(X) :-
+    female(X).
+
+% X is a parent of Y
+is_parent(X, Y) :-
+    parent(X, Y).
+
+% X and Y are siblings if they share at least one parent
+is_sibling(X, Y) :-
+    parent(P, X),
+    parent(P, Y),
+    X \= Y.
+
+% X and Y are partners
+is_partner(X, Y) :-
+    partner(X, Y).
+
+% Example Queries:
+% To check if someone is male:
+% ?- is_male(dinesh).
+%
+% To check if someone is female:
+% ?- is_female(manasi).
+%
+% To find the parents of Manasi:
+% ?- is_parent(Parent, manasi).
+%
+% To find siblings of Manasi:
+% ?- is_sibling(manasi, Sibling).
+%
+% To find the partner of Dinesh:
+% ?- is_partner(dinesh, Partner).
+%
+% To find the partner of Nirhoo:
+% ?- is_partner(nirhoo, Partner).
